@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@300&display=swap');
+
+/* GLOBAL STYLES */
+body {
+  background: #333;
+  font-family: 'Grenze Gotisch', cursive;
+  padding: 5em;
+  display: flex;
+  justify-content: left;
+  width: 100%;
+  overflow: hidden;
+  transition: all .5s ease;
+}
+
+/* DEMO-SPECIFIC STYLES */
+
+.magician {
+  height: 100px;
+}
+.container {
+  position: absolute;
+  left: 13.336rem;
+  right: 0px;
+  top: 7rem;
+  bottom: 20rem;
+  color: rgb(206, 145, 117); 
+}
+
+.input-container {
+  position: absolute;
+top: 15rem;
+left: 15rem;
+}
+.input {
+  border: none;
+  padding:.7em;
+  border-radius:.4rem 0 0 .4rem;
+  background: #f0dcdc;
+  transition: all 1s ease;
+}
+.input::placeholder {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.input:focus {
+  border-radius: 0;
+}
+.btn,
+.boolean-btn,
+#input-number,
+.resetbtn {
+  outline: none;
+}
+.btn {
+  border: none;
+  padding:.7em;
+  border-radius:0 .4rem .4rem 0;
+  background: #eb8686;
+  transition: all 1s ease;
+  cursor: pointer;
+}
+.btn:hover {
+  color: #eb8686;
+  background: #333;
+  border:.5px double  #eb8686;
+}
+.boolean-btn {
+  border: none;
+  padding:.7em;
+  border-radius:.4rem ;
+  background: #eb8686;
+  cursor: pointer;
+  transition: all 1s ease;
+  margin-right:2rem ;
+}
+.boolean-btn:hover {
+  border: 1px double #eb8686;
+  color: rgb(223, 191, 191);
+  background: transparent;
+}
+.boolean-btn:first-child {
+  background: rgb(68, 156, 156);
+}
+.boolean-btn:first-child:hover  {
+  border: 1px double  rgb(68, 156, 156);
+  background: transparent;
+}
+ /* core code style  */
+ #input-number {
+  border: none;
+  padding:.7em;
+  border-radius:.4rem 0 0 .4rem;
+  background: #f0dcdc;
+  transition: all 1s ease;
+ }
+ /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+ #demo {
+   color:#fff;
+   font-size: large;
+ }
+ .resetbtn {
+   position: absolute;
+   top: 0;
+   left: 0;
+ }
+/* .container {
+position: relative;
+font-family: Consolas, monospace;  
+} */
+
+.typing {
+position: absolute;
+top: 0;
+margin: 0;
+
+z-index: -1;
+}
+
+.hiders {
+margin: 0;
+position: absolute;
+top: 0;
+width: 100%;
+}
+
+.hiders p {
+position: relative; 
+clear: both; 
+margin: 0;
+float: right; /* makes animation go left-to-right */
+width:0; /* graceful degradation: if animation doesn't work, these are invisible by default */
+background: #333; /* same as page background */
+animation: typing 10s steps(30, end);
+animation-fill-mode: both;  /* load first keyframe on page load, leave on last frame at end */
+}
+
+.hiders p:nth-child(2) {
+animation-delay: 2s;
+}
+.hiders p:nth-child(3) {
+animation-delay: 4s;
+}
+.hiders p:nth-child(4) {
+animation-delay: 6s;
+}
+.hiders p:nth-child(5) {
+animation-delay: 8s;
+}
+@keyframes typing {
+  from { width: 100% }
+  to { width: 0 } 
+}
+/* styling svg  */
+#right-eye ,
+ #left-eye {
+  transform-origin: center;
+  animation: blink-eye 1s ease infinite;
+}
+@keyframes blink-eye {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
+
+ 
