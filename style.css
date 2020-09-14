@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@300&display=swap');
-
+html,body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 /* GLOBAL STYLES */
 body {
   background: #333;
@@ -70,17 +74,17 @@ left: 15rem;
   background: #eb8686;
   cursor: pointer;
   transition: all 1s ease;
-  margin-right:2rem ;
+  margin:2rem ;
 }
 .boolean-btn:hover {
   border: 1px double #eb8686;
   color: rgb(223, 191, 191);
   background: transparent;
 }
-.boolean-btn:first-child {
+.boolean-btn:nth-child(1) {
   background: rgb(68, 156, 156);
 }
-.boolean-btn:first-child:hover  {
+.boolean-btn:nth-child(1) :hover  {
   border: 1px double  rgb(68, 156, 156);
   background: transparent;
 }
@@ -121,7 +125,6 @@ font-family: Consolas, monospace;
 position: absolute;
 top: 0;
 margin: 0;
-
 z-index: -1;
 }
 
@@ -155,6 +158,12 @@ animation-delay: 6s;
 .hiders p:nth-child(5) {
 animation-delay: 8s;
 }
+.hiders p:nth-child(6) {
+animation-delay: 10s;
+}
+.hiders p:nth-child(7) {
+animation-delay: 12s;
+}
 @keyframes typing {
   from { width: 100% }
   to { width: 0 } 
@@ -171,6 +180,35 @@ animation-delay: 8s;
   }
   to {
     width: 0;
+  }
+}
+.fix-btn {
+  position: absolute;
+    top: 10rem;
+}
+@media only screen and (max-width: 452px) {
+  .btn {
+    border-radius: .4rem;
+  }
+  .fix-btn {
+    position: absolute;
+    top: 30rem;
+  }
+}
+@media only screen and (max-width: 318px) {
+  .fix-btn {
+    top: 45rem;
+  }
+  .btn,
+  .input-container {
+    position: absolute;
+    top: inherit;
+  }
+}
+@media  screen and (min-width: 436px) and (max-width: 540px) {
+  .fix-btn {
+    position: absolute;
+    top: inherit;
   }
 }
 

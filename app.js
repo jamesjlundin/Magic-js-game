@@ -28,7 +28,11 @@ const AudioItems = [
   {
   id : 5,
   src:"./media/2016-11-20_-_Anticipation_-_David_Fesliyan.mp3",
-}
+},
+  {
+  id : 6,
+  src:"./media/zapsplat_multimedia_game_tone_incorrect_buzz_001_39131.mp3",
+},
 ];
 const MagicianImg = [
   {
@@ -41,7 +45,7 @@ const MagicianImg = [
 }
 ];
 window.addEventListener("DOMContentLoaded", ()=>{
-  audioId.setAttribute("src", AudioItems[5].src);
+  audioId.setAttribute("src", AudioItems[3].src);
   magician.setAttribute("src", MagicianImg[0].src);
   audioId.play();
   audioId.loop = true;
@@ -60,6 +64,7 @@ setTimeout(()=>{
  newInput.setAttribute("placeholder" , "Name");
  newInput.setAttribute("class" , "input");
  newInput.setAttribute("type" , "text");
+ newInput.required =true;
   inputCon.appendChild(newInput);
   newBtn.setAttribute("type" , "button");
   newBtn.setAttribute("value" , "Ok");
@@ -79,26 +84,44 @@ setTimeout(()=>{
     },1500)
   });
 } else  return getUserName();
-},12000);
+},11000);
 
 function getUserName() {
   console.log(sessionStorage.getItem("name"));
   let User_name = sessionStorage.getItem("name");
   User_name.toUpperCase();
   User_name.fontcolor = `#eb8686`;
-  type.innerHTML =  `Welcome, Mr ${User_name}<br>
-  here is the game rule......`;
+  type.innerHTML =  `Welcome, Mr. ${User_name}<br>
+  Here is the game rule. 
+Think(guess) any number then sum up each digit of the number. After that, subtract the result( summation of the number digits) from the original number.<br>
+ If your number is negative number then subtract instead of adding the digits each other.
+  
+ So here is the game. Omit one digit from the net value and tell me the rest. Then I will show you the omitted digit(number). you should omit only one digit. and the one you will tell me can be more than one.<br>
+Sounds cool? Let's see with the example...`;
   // next-btn
   let next = document.createElement("input");
   next.setAttribute("type" , "button");
-  next.setAttribute("class" , "btn");
-  next.setAttribute("value" , "I get it!");
+  next.setAttribute("class" , "btn fix-btn");
+  next.setAttribute("value" , "Next");
+  next.style.borderRadius = `0.4rem`;
   inputCon.appendChild(next);
 
+  let  nextBtnClone = document.createElement("input");
+  nextBtnClone.setAttribute("type" , "button");
+  nextBtnClone.setAttribute("class" , "btn fix-btn");
+  nextBtnClone.setAttribute("value" , "I get it!");
 
-  next.addEventListener("click",()=>{
+  next.onclick = ()=> {
+  type.innerHTML = `Let say you guessed(think) a number 73. So, 7 + 3 = 10. Then 73 - 10 = 63.<br> 
+  If you omit 6 and you tell me 3. I will show you the omitted digit in this case 6.
+  This works perfectly for all Integers except from -19 up to 19.<br> 
+   If you think(guess) the number among them you ended up with one digit after the process. <br> That breaks the game rule because if you ended up with one digit there is nothing to omit`;
+   next.remove();
+   inputCon.appendChild(nextBtnClone);
+ }
+ nextBtnClone.addEventListener("click",()=>{
   setTimeout(()=>{
-    next.remove();
+    nextBtnClone.remove();
     type.innerHTML =  `let's began the game. <br>
     give me the nubmer and I will tell you the missed number.
     Are you ready, ${User_name}?`; 
@@ -161,7 +184,7 @@ function fireGame(){
     resetBtn.setAttribute("value", "Reset");
     BackBtn.appendChild(resetBtn);
     resetBtn.onclick = ()=>{
-      let reset = confirm("you will be asked your name again!");
+      let reset = confirm("you will be asked your name again!\n Are You sure?");
       if(reset == true){
         return backToDefault();
       }
@@ -172,7 +195,6 @@ function fireGame(){
     demo.textContent = `Thinking...🤔💭`;
     setTimeout(()=>{
     audioId.pause();
-    audioId.setAttribute("src", AudioItems[1].src);
     audioId.loop = false;
       let number = numInput.value;
     number = parseFloat(number);
@@ -180,6 +202,9 @@ function fireGame(){
     copyNum = number ; 
     if(number !== Math.floor(number)){ 
       console.error("no decimal");
+       magician.setAttribute("src", MagicianImg[0].src);
+        audioId.setAttribute("src", AudioItems[6].src);
+        type.innerHTML = `hey, Keep the game rule!`;
       demo.textContent = `decimals, texts or symbols are not accepted! only  Z(integer).`;
    }
     else {
@@ -189,6 +214,8 @@ function fireGame(){
          let missedNum = copyNum - number;
          console.log('missed number = ' + missedNum);
          magician.setAttribute("src", MagicianImg[1].src);
+          audioId.setAttribute("src", AudioItems[1].src);
+          
          type.innerHTML = `Here it is! 😎🆒🤓`;
          return demo.textContent = 'The Missed Number is ' + missedNum+'.';
        }
@@ -200,12 +227,6 @@ function fireGame(){
 }
 
 function backToDefault() {
-  sessionStorage.removeItem("name");
+  sessionStorage.clear();
   window.location.reload();
 }
-
-// style core code 
-// svg replacement
-// make restart button
-// audio
-// animation 
