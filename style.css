@@ -7,7 +7,7 @@ html,body {
 /* GLOBAL STYLES */
 body {
   background: #333;
-  font-family: 'Grenze Gotisch', cursive;
+  font-family:  cursive;
   padding: 5em;
   display: flex;
   justify-content: left;
@@ -210,7 +210,7 @@ animation-delay: 12s;
   position: absolute;
     top: 10rem;
 }
-@media only screen and (max-width: 452px) {
+@media only screen and (max-width:524px) {
   .btn {
     border-radius: .4rem;
   }
@@ -219,7 +219,7 @@ animation-delay: 12s;
     top: 30rem;
   }
 }
-@media only screen and (max-width: 318px) {
+@media only screen and (max-width: 398px) {
   .fix-btn {
     top: 45rem;
   }
@@ -229,7 +229,7 @@ animation-delay: 12s;
     top: inherit;
   }
 }
-@media  screen and (min-width: 436px) and (max-width: 540px) {
+@media  screen and (min-width: 524px) and (max-width: 620px) {
   .fix-btn {
     position: absolute;
     top: inherit;

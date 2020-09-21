@@ -76,12 +76,14 @@ setTimeout(()=>{
     const User_name = newInput.value;
     audioId.play();
     sessionStorage.setItem("name" , User_name);
-    setTimeout(()=>{
+    const timeOut =  () => {
       newInput.style.display = `none`;
       newBtn.style.display = `none`;
       type.innerHTML =``;
       getUserName();
-    },1500)
+      return  clearTimeout(timeOut);
+    };
+    setTimeout(timeOut ,1500);
   });
 } else  return getUserName();
 },11000);
@@ -119,18 +121,22 @@ Sounds cool? Let's see with the example...`;
    next.remove();
    inputCon.appendChild(nextBtnClone);
  }
+ let isFirst = true;
  nextBtnClone.addEventListener("click",()=>{
-  setTimeout(()=>{
+ const timeOut =  ()=>{
     nextBtnClone.remove();
     type.innerHTML =  `let's began the game. <br>
     give me the nubmer and I will tell you the missed number.
     Are you ready, ${User_name}?`; 
+    if(!isFirst) return clearTimeout(timeOut);
+    isFirst = false;
     const Btn = [
        document.createElement("input") ,
        document.createElement("input")
     ];
     Btn[0].setAttribute("value" , "Yes, I'm Ready👍");
     Btn[1].setAttribute("value" , "No, I'm confused😕");
+    
  Btn.forEach(btn => {
      inputCon.appendChild(btn);
      btn.setAttribute("class" , "boolean-btn");
@@ -149,7 +155,9 @@ Sounds cool? Let's see with the example...`;
         });
       });
     })
-  },1000);
+    return clearTimeout(timeOut);
+  }
+  setTimeout(timeOut,1000);
 });
 }
 
@@ -193,7 +201,7 @@ function fireGame(){
   //  core code
   submitBtn.addEventListener('click',(copyNum)=>{
     demo.textContent = `Thinking...🤔💭`;
-    setTimeout(()=>{
+   const timeOut =  ()=>{
     audioId.pause();
     audioId.loop = false;
       let number = numInput.value;
@@ -222,7 +230,9 @@ function fireGame(){
        copyNum++;
      }
   }
-    },2000) 
+    }
+    setTimeout(timeOut,2000);
+    clearTimeout(timeOut);
   });
 }
 
