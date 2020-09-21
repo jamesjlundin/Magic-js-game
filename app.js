@@ -44,7 +44,7 @@ const MagicianImg = [
     src : "./media/magic-celebreate-svg.svg"
 }
 ];
-window.addEventListener("DOMContentLoaded", ()=>{
+window.addEventListener("DOMContentLoaded", () => {
   audioId.setAttribute("src", AudioItems[3].src);
   magician.setAttribute("src", MagicianImg[0].src);
   audioId.play();
@@ -59,12 +59,13 @@ window.addEventListener("DOMContentLoaded", ()=>{
 
 setTimeout(()=>{
   if(sessionStorage.getItem("name") === null){
- let newInput=  document.createElement("input");
- let newBtn=  document.createElement("input");
+ const newInput =  document.createElement("input");
+ const newBtn =  document.createElement("input");
+
  newInput.setAttribute("placeholder" , "Name");
  newInput.setAttribute("class" , "input");
  newInput.setAttribute("type" , "text");
- newInput.required =true;
+ newInput.required = true;
   inputCon.appendChild(newInput);
   newBtn.setAttribute("type" , "button");
   newBtn.setAttribute("value" , "Ok");
@@ -90,7 +91,7 @@ setTimeout(()=>{
 
 function getUserName() {
   console.log(sessionStorage.getItem("name"));
-  let User_name = sessionStorage.getItem("name");
+  const User_name = sessionStorage.getItem("name");
   User_name.toUpperCase();
   User_name.fontcolor = `#eb8686`;
   type.innerHTML =  `Welcome, Mr. ${User_name}<br>
@@ -101,14 +102,14 @@ Think(guess) any number then sum up each digit of the number. After that, subtra
  So here is the game. Omit one digit from the net value and tell me the rest. Then I will show you the omitted digit(number). you should omit only one digit. and the one you will tell me can be more than one.<br>
 Sounds cool? Let's see with the example...`;
   // next-btn
-  let next = document.createElement("input");
+  const next = document.createElement("input");
   next.setAttribute("type" , "button");
   next.setAttribute("class" , "btn fix-btn");
   next.setAttribute("value" , "Next");
   next.style.borderRadius = `0.4rem`;
   inputCon.appendChild(next);
 
-  let  nextBtnClone = document.createElement("input");
+  const  nextBtnClone = document.createElement("input");
   nextBtnClone.setAttribute("type" , "button");
   nextBtnClone.setAttribute("class" , "btn fix-btn");
   nextBtnClone.setAttribute("value" , "I get it!");
@@ -165,10 +166,10 @@ function fireGame(){
   console.log("fire");
   type.innerHTML = `Me too! Here we go. <br> Let's do this,<br>`
 
-  let form = document.createElement("form");
-  let numInput = document.createElement("input");
-  let submitBtn = document.createElement("input");
-  let demo = document.createElement("p");
+  const form = document.createElement("form");
+  const numInput = document.createElement("input");
+  const submitBtn = document.createElement("input");
+  const demo = document.createElement("p");
       demo.setAttribute("id", "demo");
 
   //input text attributes 
@@ -186,7 +187,7 @@ function fireGame(){
   inputCon.appendChild(form);
 
   // reset Btn
-  let resetBtn = document.createElement("input");
+  const resetBtn = document.createElement("input");
     resetBtn.setAttribute("class", "resetbtn btn");
     resetBtn.setAttribute("type", "button");
     resetBtn.setAttribute("value", "Reset");
